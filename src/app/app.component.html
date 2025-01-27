@@ -1,26 +1,29 @@
-<mat-toolbar>
-  <button mat-icon-button (click)="drawer.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <h2 class="mat-sys-headline-large" style="color: white">
-    Entei - Rendering Competition
-  </h2>
-  <div class="spacer"></div>
-</mat-toolbar>
-<mat-drawer-container class="max-height">
-  <mat-drawer #drawer mode="side" class="drawer">
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row class="menu">
+    <h1 class="mat-sys-headline-large" style="color: white">
+      Entei - Rendering Competition
+    </h1>
+    <span class="spacer"></span>
     <div class="link-container">
-      <a mat-button routerLink="/" routerLinkActive="active"> Introduction </a>
-      <a mat-button routerLink="/features" routerLinkActive="active">
-        Our Features
-      </a>
-      <a mat-button routerLink="/final" routerLinkActive="active">
-        Final Submission
+      <a mat-flat-button routerLink="/" routerLinkActive="active">
+        Our Submission
       </a>
     </div>
-  </mat-drawer>
+    <div class="link-container">
+      <a mat-flat-button routerLink="/features" routerLinkActive="active">
+        Implemented Features
+      </a>
+    </div>
+    <div class="link-container">
+      <a mat-flat-button routerLink="/references" routerLinkActive="active">
+        References
+      </a>
+    </div>
+    <span class="spacer"></span>
+    <span class="spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-  <div class="container max-height">
-    <router-outlet></router-outlet>
-  </div>
-</mat-drawer-container>
+<div class="container max-height">
+  <router-outlet></router-outlet>
+</div>

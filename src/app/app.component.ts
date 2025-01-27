@@ -7,7 +7,6 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet,
     RouterModule,
     MatToolbarModule,
     MatButtonModule,
@@ -18,4 +17,4 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './app.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppComponent {}
+export class AppComponent { }

@@ -5,8 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-features',
-  imports: [SectionComponent, SectionComponent, FigureComponent, MatCardModule],
+  imports: [SectionComponent, FigureComponent, MatCardModule],
   templateUrl: './features.component.html',
   styleUrl: './features.component.scss',
 })
-export class FeaturesComponent {}
+export class FeaturesComponent { }

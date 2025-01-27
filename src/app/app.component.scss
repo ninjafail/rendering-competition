@@ -5,6 +5,10 @@
   align-self: center;
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
 mat-toolbar {
   background-color: var(--mat-sys-primary);
 }
@@ -20,4 +24,5 @@ mat-toolbar {
 .link-container {
   display: flex;
   flex-direction: column;
+  padding-right: 1em;
 }
