@@ -1,0 +1,23 @@
+.container {
+  max-width: 50rem;
+  padding: 0.5rem;
+  margin: auto;
+  align-self: center;
+}
+
+mat-toolbar {
+  background-color: var(--mat-sys-primary);
+}
+
+.max-height .drawer .container {
+  height: 100%;
+}
+
+.drawer {
+  max-width: 25%;
+}
+
+.link-container {
+  display: flex;
+  flex-direction: column;
+}

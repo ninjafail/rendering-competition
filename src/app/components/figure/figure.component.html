@@ -1,0 +1,24 @@
+<div class="flex-center">
+  <img *ngIf="!usesComparison()" [src]="src" />
+
+  <img-comparison-slider *ngIf="usesComparison()" hover="true">
+    <figure slot="first" class="before">
+      <img width="100%" [src]="firstSrc" />
+      <figcaption *ngIf="firstCaption != ''">
+        <button mat-raised-button color="primary">
+          &nbsp; &nbsp; {{ firstCaption }}
+        </button>
+      </figcaption>
+    </figure>
+    <figure slot="second" class="after">
+      <img width="100%" [src]="secondSrc" />
+      <figcaption *ngIf="secondCaption != ''">
+        <button mat-raised-button color="primary">
+          {{ secondCaption }} &nbsp; &nbsp;
+        </button>
+      </figcaption>
+    </figure>
+  </img-comparison-slider>
+
+  <div class="caption">{{ caption }} <ng-content></ng-content></div>
+</div>
