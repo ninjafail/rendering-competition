@@ -13,11 +13,13 @@ mat-toolbar {
   background-color: var(--mat-sys-primary);
 }
 
-.max-height,
 .drawer,
 .container,
-mat-drawer-container,
 mat-drawer-content {
+  height: 100%;
+}
+
+mat-drawer-container {
   height: calc(100% - 64px);
 }
 
@@ -39,6 +41,6 @@ mat-drawer-content {
   background-color: lightgray;
 }
 
-.mat-mdc-icon-button  {
+.mat-mdc-icon-button {
   padding: 0;
 }

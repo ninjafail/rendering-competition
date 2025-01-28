@@ -24,7 +24,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-drawer-container class="max-height">
+<mat-drawer-container>
   <mat-drawer #sidenav mode="over" *ngIf="sidebarShown">
     <mat-list>
       <a
@@ -39,7 +39,7 @@
     </mat-list>
   </mat-drawer>
   <mat-drawer-content>
-    <div class="container max-height">
+    <div class="container">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-content>
