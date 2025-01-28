@@ -10,7 +10,11 @@ export const routes: Routes = [
     component: SubmissionComponent,
     title: 'Our Submission',
   },
-  { path: 'features', component: FeaturesComponent, title: 'Implemented Features' },
+  {
+    path: 'features',
+    component: FeaturesComponent,
+    title: 'Implemented Features',
+  },
   {
     path: 'references',
     component: ReferencesComponent,

@@ -1,29 +1,46 @@
 <mat-toolbar class="toolbar">
   <mat-toolbar-row class="menu">
-    <h1 class="mat-sys-headline-large" style="color: white">
-      Entei - Rendering Competition
-    </h1>
-    <span class="spacer"></span>
-    <div class="link-container">
-      <a mat-flat-button routerLink="/" routerLinkActive="active">
-        Our Submission
-      </a>
+    <button
+      mat-icon-button
+      (click)="sidenav.toggle()"
+      style="color: white"
+      *ngIf="sidebarShown"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="title" style="color: white">
+      Entei
+      <span class="subtitle">Rendering Competition</span>
     </div>
-    <div class="link-container">
-      <a mat-flat-button routerLink="/features" routerLinkActive="active">
-        Implemented Features
-      </a>
-    </div>
-    <div class="link-container">
-      <a mat-flat-button routerLink="/references" routerLinkActive="active">
-        References
-      </a>
-    </div>
-    <span class="spacer"></span>
-    <span class="spacer"></span>
+    <ng-container *ngIf="!sidebarShown">
+      <div *ngFor="let link of links" class="link-container">
+        <a mat-flat-button [routerLink]="link.url" routerLinkActive="active">
+          {{ link.name }}
+        </a>
+      </div>
+      <span class="spacer"></span>
+      <span class="spacer"></span>
+    </ng-container>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="container max-height">
-  <router-outlet></router-outlet>
-</div>
+<mat-drawer-container class="max-height">
+  <mat-drawer #sidenav mode="over" *ngIf="sidebarShown">
+    <mat-list>
+      <a
+        *ngFor="let link of links"
+        [routerLink]="link.url"
+        mat-list-item
+        (click)="sidebarShown ? sidenav.toggle() : null"
+        class="hoverable"
+      >
+        {{ link.name }}
+      </a>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="container max-height">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

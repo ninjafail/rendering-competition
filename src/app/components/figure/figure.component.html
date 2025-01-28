@@ -1,5 +1,8 @@
 <div class="flex-center">
-  <img *ngIf="!usesComparison()" [src]="src" />
+  
+  <div class="image-container">
+    <img *ngIf="!usesComparison()" [src]="src" />
+  </div>
 
   <img-comparison-slider *ngIf="usesComparison()" hover="true">
     <figure slot="first" class="before">
