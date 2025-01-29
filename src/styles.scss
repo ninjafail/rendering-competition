@@ -4,7 +4,7 @@
 @use '../theme-colors' as my-theme;
 
 html {
-  color-scheme: light dark;
+  color-scheme: light;
   @include mat.theme((color: (theme-type: light,
         primary: my-theme.$primary-palette,
         tertiary: my-theme.$tertiary-palette,
@@ -31,7 +31,6 @@ html,
 body {
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
 }
 
 body {
@@ -47,4 +46,15 @@ body {
 app-root {
   display: block;
   height: 100%;
+}
+
+h2 {
+  font-weight: 100;
+}
+
+.intro {
+  padding: 0.5em 0;
+  max-width: 50%;
+  margin: auto;
+  align-self: center;
 }

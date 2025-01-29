@@ -1,17 +1,13 @@
 <mat-toolbar class="toolbar">
   <mat-toolbar-row class="menu">
-    <button
-      mat-icon-button
-      (click)="sidenav.toggle()"
-      style="color: white"
-      *ngIf="sidebarShown"
-    >
+    <button mat-icon-button (click)="sidenav.toggle()" style="color: white" *ngIf="sidebarShown">
       <mat-icon>menu</mat-icon>
     </button>
     <div class="title" style="color: white">
       Entei
       <span class="subtitle">Rendering Competition</span>
     </div>
+    <span class="spacer"></span>
     <ng-container *ngIf="!sidebarShown">
       <div *ngFor="let link of links" class="link-container">
         <a mat-flat-button [routerLink]="link.url" routerLinkActive="active">
@@ -27,13 +23,8 @@
 <mat-drawer-container>
   <mat-drawer #sidenav mode="over" *ngIf="sidebarShown">
     <mat-list>
-      <a
-        *ngFor="let link of links"
-        [routerLink]="link.url"
-        mat-list-item
-        (click)="sidebarShown ? sidenav.toggle() : null"
-        class="hoverable"
-      >
+      <a *ngFor="let link of links" [routerLink]="link.url" mat-list-item
+        (click)="sidebarShown ? sidenav.toggle() : null" class="hoverable">
         {{ link.name }}
       </a>
     </mat-list>
