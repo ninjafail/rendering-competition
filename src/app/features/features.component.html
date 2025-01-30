@@ -4,18 +4,50 @@
   <p>This is a list of all the features we implemented in our renderer:</p>
 
   <ul>
-    <li><a href="/features#shading-normals" routerLinkActive="active">Shading Normals</a></li>
-    <li><a href="/features#image-denoising" routerLinkActive="active">Image Denoising</a></li>
-    <li><a href="/features#rough-dielectric" routerLinkActive="active">Rough Dielectric</a></li>
-    <li><a href="/features#area-lights" routerLinkActive="active">Area Lights</a></li>
-    <li><a href="/features#thinlens-camera" routerLinkActive="active">Thinlens Camera</a></li>
-    <li><a href="/features#mis" routerLinkActive="active">MIS Path Tracer</a></li>
+    <li>
+      <a href="/features#shading-normals" routerLinkActive="active"
+        >Shading Normals</a
+      >
+    </li>
+    <li>
+      <a href="/features#image-denoising" routerLinkActive="active"
+        >Image Denoising</a
+      >
+    </li>
+    <li>
+      <a href="/features#rough-dielectric" routerLinkActive="active"
+        >Rough Dielectric</a
+      >
+    </li>
+    <li>
+      <a href="/features#area-lights" routerLinkActive="active">Area Lights</a>
+    </li>
+    <li>
+      <a href="/features#thinlens-camera" routerLinkActive="active"
+        >Thinlens Camera</a
+      >
+    </li>
+    <li>
+      <a href="/features#mis" routerLinkActive="active">MIS Path Tracer</a>
+    </li>
   </ul>
 </div>
 <app-section title="Shading Normals" id="shading-normals">
   <h4>Use in our submission:</h4>
-  <p>Many textures that are used in our scene use shading normals.</p>
+  <p>
+    We wanted to implement shading normals, as they are a simple and cheap way
+    to get more detail. Most of our textured meshes also have a normal map, i.e.
+    the desk, the monitor base, the notebook and pen, keyboard and mouse. Even
+    the blurry background and foreground have the hooded figure and a wallpaper
+    profiting from textures and shading normals.
+  </p>
   <h4>Challenges:</h4>
+  <p>
+    The implementation was pretty straightforward. Instead of the normal from
+    the shape we use the normal from the given at the right uv coordinates. The
+    most challenging part was finding out how exactly the normal is encoded in
+    the image, but after some research and guesswork we found out.
+  </p>
   <h4>Code:</h4>
   <ul>
     <li>
@@ -26,11 +58,32 @@
 
 <app-section title="Image Denoisiing" id="image-denoising">
   <h4>Use in our submission:</h4>
-  <p>We add this post-processing class so that our rendered image shows less noise.</p>
+  <p>
+    Getting a high enough sample count to remove any noise is not possible with
+    our hardware. Thus, we add this post-processing class so that our rendered
+    image shows no noise.
+  </p>
   <h4>Challenges:</h4>
-  <p>We needed to add an albedo function to the bsdfs.</p>
+  <p>
+    For albedo support, we needed to add an extra albedo function to all bsdfs.
+    Further, getting oidn to run was quite the hassle. In the end, it was pretty
+    simple though. Instead of manually building every required component, we
+    just installed the develompent packacke using our package manager of choice.
+  </p>
   <h4>Code:</h4>
   <ul>
+    <li>
+      <code>include/lightwave/bsdf.hpp</code>
+    </li>
+    <li>
+      <code>src/bsdfs/diffuse.cpp</code>
+    </li>
+    <li>
+      <code>src/bsdfs/principled.cpp</code>
+    </li>
+    <li>
+      <code>src/integrators/albedo.cpp</code>
+    </li>
     <li>
       <code>src/postprocessing/denoise.cpp</code>
     </li>
@@ -41,10 +94,17 @@
   <h4>Use in our submission:</h4>
   <p>The glass on the table has a rough dielectric bsdf.</p>
   <h4>Challenges:</h4>
-  <p>We had some troubles understanding the mathematical equations but were able to sort it out in the end.</p>
+  <p>
+    We had some troubles understanding the mathematical equations but were able
+    to sort it out in the end.
+  </p>
 
-  <app-figure firstSrc="dielectric.jpg" firstCaption="Dielectric Surface" secondSrc="roughdielectric.jpg"
-    secondCaption="Rough Dielectric Surface">
+  <app-figure
+    firstSrc="dielectric.jpg"
+    firstCaption="Dielectric Surface"
+    secondSrc="roughdielectric.jpg"
+    secondCaption="Rough Dielectric Surface"
+  >
     Effect of <i>Rough Dielectric Bsdf</i>
   </app-figure>
 
@@ -58,12 +118,14 @@
 
 <app-section title="Area Lights" id="area-lights">
   <h4>Use in our submission:</h4>
-  <p>We use area lights to represent the light that comes from a window behind the camera.</p>
   <h4>Challenges:</h4>
-  <p></p>
 
-  <app-figure firstSrc="emission_rectangle.jpg" firstCaption="Emmissive Objects" secondSrc="area_rectangle.jpg"
-    secondCaption="Area Lights">
+  <app-figure
+    firstSrc="emission_rectangle.jpg"
+    firstCaption="Emmissive Objects"
+    secondSrc="area_rectangle.jpg"
+    secondCaption="Area Lights"
+  >
     Effect of <i>Area Lights</i>
   </app-figure>
 
@@ -84,14 +146,15 @@
   </ul>
 </app-section>
 
-
 <app-section title="Thinlens Camera" id="thinlens-camera">
   <h4>Use in our submission:</h4>
-  <p>The thinlens camera is used so that the person sitting in front of the desk appears blurry, so that the focus is on
-    the objects on the desk.</p>
+  <p></p>
   <h4>Challenges:</h4>
-  <p>We followed the PBRT book and did not encounter many problems during the implementation. The only bug we
-    encountered was that at one time we accidentaly passed the local ray instead of the world ray.</p>
+  <p>
+    We followed the PBRT book and did not encounter many problems during the
+    implementation. The only bug we introduced was that we accidentaly passed
+    the local ray instead of the world ray.
+  </p>
   <h4>Code:</h4>
   <ul>
     <li>
@@ -102,19 +165,15 @@
 
 <app-section title="MIS Path Tracer" id="mis">
   <h4>Use in our submission:</h4>
-  <p>In our scene we use mainly area lights, but we also have emissive surfaces (the monitor). To combine NEE (to best
-    represent the lights contributions) and BSDF sampling (for the emissive surfaces), we implemented MIS.</p>
+  <p>To further reduce noise we implemented MIS into our renderer.</p>
   <h4>Challenges:</h4>
-  <p>It was a bit difficult to keep track of the different probabilities and weights. We had to restructure the path
-    tracer to make it more intuitive to follow. Additionally, the introduced <code>pdf</code> member for the
-    <code>BsdfSample</code> and <code>DirectLightSample</code> posed another difficulty.
+  <p>
+    It was a bit difficult to keep track of the different probabilities and
+    weights. We had to restructure the path tracer to make it more intuitive to
+    follow. Additionally, the introduced <code>pdf</code> member for the
+    <code>BsdfSample</code> and <code>DirectLightSample</code> posed another
+    difficulty.
   </p>
-
-  <app-figure firstSrc="no_MIS.jpg" firstCaption="Only BSDF sampling" secondSrc="MIS.jpg"
-    secondCaption="MIS sampling of NEE and BSDF sampling">
-    Effect of <i>MIS</i>
-  </app-figure>
-
   <h4>Code:</h4>
   <ul>
     <li>
