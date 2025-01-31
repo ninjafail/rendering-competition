@@ -52,16 +52,18 @@ h2 {
   font-weight: 100;
 }
 
+.footer {
+  padding-block: 2rem;
+}
 
-
-.intro, .content, .header div {
+.intro, .content, .header div, .footer {
   max-width: 50%;
   margin: auto;
   align-self: center;
 }
 
 @media screen and (max-width: 980px) {
-  .intro, .content, .header div {
+  .intro, .content, .header div, .footer {
     max-width: 30rem;
   }
 
@@ -72,4 +74,10 @@ h2 {
 
 .intro {
   padding: 0.5em 0;
+}
+
+:root {
+  @include mat.divider-overrides((
+    color: var(--mat-sys-primary),
+  ));
 }

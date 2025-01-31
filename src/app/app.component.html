@@ -1,6 +1,11 @@
 <mat-toolbar class="toolbar">
   <mat-toolbar-row class="menu">
-    <button mat-icon-button (click)="sidenav.toggle()" style="color: white" *ngIf="sidebarShown">
+    <button
+      mat-icon-button
+      (click)="sidenav.toggle()"
+      style="color: white"
+      *ngIf="sidebarShown"
+    >
       <mat-icon>menu</mat-icon>
     </button>
     <div class="title" style="color: white">
@@ -23,8 +28,13 @@
 <mat-drawer-container>
   <mat-drawer #sidenav mode="over" *ngIf="sidebarShown">
     <mat-list>
-      <a *ngFor="let link of links" [routerLink]="link.url" mat-list-item
-        (click)="sidebarShown ? sidenav.toggle() : null" class="hoverable">
+      <a
+        *ngFor="let link of links"
+        [routerLink]="link.url"
+        mat-list-item
+        (click)="sidebarShown ? sidenav.toggle() : null"
+        class="hoverable"
+      >
         {{ link.name }}
       </a>
     </mat-list>
@@ -32,6 +42,10 @@
   <mat-drawer-content>
     <div class="container">
       <router-outlet></router-outlet>
+      <mat-divider></mat-divider>
+      <div class="footer">
+        <span>© 2024 Leonie Von Mann & Florian Romann</span>
+      </div>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
