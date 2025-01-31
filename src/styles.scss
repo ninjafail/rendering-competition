@@ -52,9 +52,24 @@ h2 {
   font-weight: 100;
 }
 
-.intro {
-  padding: 0.5em 0;
+
+
+.intro, .content, .header div {
   max-width: 50%;
   margin: auto;
   align-self: center;
+}
+
+@media screen and (max-width: 980px) {
+  .intro, .content, .header div {
+    max-width: 30rem;
+  }
+
+  .header {
+    padding-block: auto;
+  }
+}
+
+.intro {
+  padding: 0.5em 0;
 }
