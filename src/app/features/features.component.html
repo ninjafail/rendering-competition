@@ -89,8 +89,12 @@
     to sort it out in the end.
   </p>
 
-  <app-figure firstSrc="dielectric.jpg" firstCaption="Dielectric Surface" secondSrc="roughdielectric.jpg"
-    secondCaption="Rough Dielectric Surface">
+  <app-figure 
+    firstSrc="dielectric.jpg" 
+    firstCaption="Dielectric Surface" 
+    secondSrc="roughdielectric.jpg"
+    secondCaption="Rough Dielectric Surface"
+  >
     Effect of <i>Rough Dielectric Bsdf</i>
   </app-figure>
 
@@ -104,9 +108,20 @@
 
 <app-section title="Area Lights" id="area-lights">
   <h4>Use in our submission:</h4>
-  <p>We use area lights to represent the light that comes from a window behind the camera.</p>
+  <p>
+    Two large area lights above the desk give a nice mix of blue and orange
+    lights, creating soft shadows.
+  </p>
   <h4>Challenges:</h4>
-  <p></p>
+  <p>
+    Area lights required changes to both <code>sampleArea</code> for the shapes
+    and <code>sampleDirect</code> for the light itself, creating two distinct
+    sources for bugs. Having a working <code>sampleArea</code> function in
+    <code>rectangle.cpp</code> shape allowed us to first fix the light and then
+    focus on the shapes, easing debugging significantly.
+  </p>
+
+
 
   <app-figure firstSrc="emission_rectangle.jpg" firstCaption="Emmissive Objects" secondSrc="area_rectangle.jpg"
     secondCaption="Area Lights">
