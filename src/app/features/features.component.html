@@ -89,12 +89,8 @@
     to sort it out in the end.
   </p>
 
-  <app-figure 
-    firstSrc="dielectric.jpg" 
-    firstCaption="Dielectric Surface" 
-    secondSrc="roughdielectric.jpg"
-    secondCaption="Rough Dielectric Surface"
-  >
+  <app-figure firstSrc="dielectric.jpg" firstCaption="Dielectric Surface" secondSrc="roughdielectric.jpg"
+    secondCaption="Rough Dielectric Surface">
     Effect of <i>Rough Dielectric Bsdf</i>
   </app-figure>
 
@@ -168,7 +164,9 @@
   <h4>Challenges:</h4>
   <p>It was a bit difficult to keep track of the different probabilities and weights. We had to restructure the path
     tracer to make it more intuitive to follow. Additionally, the introduced <code>pdf</code> member for the
-    <code>BsdfSample</code> and <code>DirectLightSample</code> posed another difficulty.
+    <code>BsdfSample</code> and <code>DirectLightSample</code> posed another difficulty. There still is some bug in the
+    MIS implementation, since the test 'pathtracing_lights' fails. Since it did not cause any issue in our scene, we did
+    not further investigate this.
   </p>
 
   <app-figure firstSrc="no_MIS.jpg" firstCaption="Only BSDF sampling" secondSrc="MIS.jpg"
