@@ -3,19 +3,27 @@
 
   <ul>
     <li>
-      <a href="/features#shading-normals" routerLinkActive="active">Shading Normals</a>
+      <a href="/features#shading-normals" routerLinkActive="active"
+        >Shading Normals</a
+      >
     </li>
     <li>
-      <a href="/features#image-denoising" routerLinkActive="active">Image Denoising</a>
+      <a href="/features#image-denoising" routerLinkActive="active"
+        >Image Denoising</a
+      >
     </li>
     <li>
-      <a href="/features#rough-dielectric" routerLinkActive="active">Rough Dielectric</a>
+      <a href="/features#rough-dielectric" routerLinkActive="active"
+        >Rough Dielectric</a
+      >
     </li>
     <li>
       <a href="/features#area-lights" routerLinkActive="active">Area Lights</a>
     </li>
     <li>
-      <a href="/features#thinlens-camera" routerLinkActive="active">Thinlens Camera</a>
+      <a href="/features#thinlens-camera" routerLinkActive="active"
+        >Thinlens Camera</a
+      >
     </li>
     <li>
       <a href="/features#mis" routerLinkActive="active">MIS Path Tracer</a>
@@ -38,6 +46,23 @@
     most challenging part was finding out how exactly the normal is encoded in
     the image, but after some research and guesswork we found out.
   </p>
+  <app-figure
+    firstSrc="rendering-competition-normals-off-n.png"
+    firstCaption="Shading Normals Off"
+    secondSrc="rendering-competition-normals-on-n.png"
+    secondCaption="Shading Normals On"
+    caption="Effect of Shading Normals using normal integrator"
+  >
+  </app-figure>
+  <app-figure
+    firstSrc="rendering-competition-normals-off.png"
+    firstCaption="Shading Normals Off"
+    secondSrc="rendering-competition-normals-on.png"
+    secondCaption="Shading Normals On"
+    caption="Effect of Shading Normals using normal integrator"
+  >
+  </app-figure>
+
   <h4>Code:</h4>
   <ul>
     <li>
@@ -60,6 +85,21 @@
     simple though. Instead of manually building every required component, we
     just installed the develompent packacke using our package manager of choice.
   </p>
+  <app-figure
+    src="rendering-competition-normal.png"
+    caption="Normal Integrator"
+  ></app-figure>
+  <app-figure
+    src="rendering-competition-albedo.png"
+    caption="Albedo Integrator"
+  ></app-figure>
+  <app-figure
+    firstSrc="rendering-competition.png"
+    firstCaption="Path Tracer Integrator"
+    secondSrc="rendering-competition-output.png"
+    secondCaption="Denoised Image"
+  ></app-figure>
+
   <h4>Code:</h4>
   <ul>
     <li>
@@ -89,8 +129,12 @@
     to sort it out in the end.
   </p>
 
-  <app-figure firstSrc="dielectric.jpg" firstCaption="Dielectric Surface" secondSrc="roughdielectric.jpg"
-    secondCaption="Rough Dielectric Surface">
+  <app-figure
+    firstSrc="dielectric.jpg"
+    firstCaption="Dielectric Surface"
+    secondSrc="roughdielectric.jpg"
+    secondCaption="Rough Dielectric Surface"
+  >
     Effect of <i>Rough Dielectric Bsdf</i>
   </app-figure>
 
@@ -117,11 +161,21 @@
     focus on the shapes, easing debugging significantly.
   </p>
 
-
-
-  <app-figure firstSrc="emission_rectangle.jpg" firstCaption="Emmissive Objects" secondSrc="area_rectangle.jpg"
-    secondCaption="Area Lights">
+  <app-figure
+    firstSrc="emission_rectangle.jpg"
+    firstCaption="Emmissive Objects"
+    secondSrc="area_rectangle.jpg"
+    secondCaption="Area Lights"
+  >
     Effect of <i>Area Lights</i>
+  </app-figure>
+  <app-figure
+    firstSrc="rendering-competition-area-off.png"
+    firstCaption="Emissive Objects"
+    secondSrc="rendering-competition-area-on.png"
+    secondCaption="Area Lights"
+  >
+    Effect of <i>Area Lights</i> in our scene
   </app-figure>
 
   <h4>Code:</h4>
@@ -141,14 +195,18 @@
   </ul>
 </app-section>
 
-
 <app-section title="Thinlens Camera" id="thinlens-camera">
   <h4>Use in our submission:</h4>
-  <p>The thinlens camera is used so that the person sitting in front of the desk appears blurry, so that the focus is on
-    the objects on the desk.</p>
+  <p>
+    The thinlens camera is used so that the person sitting in front of the desk
+    appears blurry, so that the focus is on the objects on the desk.
+  </p>
   <h4>Challenges:</h4>
-  <p>We followed the PBRT book and did not encounter many problems during the implementation. The only bug we
-    encountered was that at one time we accidentaly passed the local ray instead of the world ray.</p>
+  <p>
+    We followed the PBRT book and did not encounter many problems during the
+    implementation. The only bug we encountered was that at one time we
+    accidentaly passed the local ray instead of the world ray.
+  </p>
   <h4>Code:</h4>
   <ul>
     <li>
@@ -159,18 +217,28 @@
 
 <app-section title="MIS Path Tracer" id="mis">
   <h4>Use in our submission:</h4>
-  <p>In our scene we use mainly area lights, but we also have emissive surfaces (the monitor). To combine NEE (to best
-    represent the lights contributions) and BSDF sampling (for the emissive surfaces), we implemented MIS.</p>
+  <p>
+    In our scene we use mainly area lights, but we also have emissive surfaces
+    (the monitor). To combine NEE (to best represent the lights contributions)
+    and BSDF sampling (for the emissive surfaces), we implemented MIS.
+  </p>
   <h4>Challenges:</h4>
-  <p>It was a bit difficult to keep track of the different probabilities and weights. We had to restructure the path
-    tracer to make it more intuitive to follow. Additionally, the introduced <code>pdf</code> member for the
-    <code>BsdfSample</code> and <code>DirectLightSample</code> posed another difficulty. There still is some bug in the
-    MIS implementation, since the test 'pathtracing_lights' fails. Since it did not cause any issue in our scene, we did
-    not further investigate this.
+  <p>
+    It was a bit difficult to keep track of the different probabilities and
+    weights. We had to restructure the path tracer to make it more intuitive to
+    follow. Additionally, the introduced <code>pdf</code> member for the
+    <code>BsdfSample</code> and <code>DirectLightSample</code> posed another
+    difficulty. There still is some bug in the MIS implementation, since the
+    test 'pathtracing_lights' fails. Since it did not cause any issue in our
+    scene, we did not further investigate this.
   </p>
 
-  <app-figure firstSrc="no_MIS.jpg" firstCaption="Only BSDF sampling" secondSrc="MIS.jpg"
-    secondCaption="MIS sampling of NEE and BSDF sampling">
+  <app-figure
+    firstSrc="no_MIS.jpg"
+    firstCaption="Only BSDF sampling"
+    secondSrc="MIS.jpg"
+    secondCaption="MIS sampling of NEE and BSDF sampling"
+  >
     Effect of <i>MIS</i>
   </app-figure>
 
